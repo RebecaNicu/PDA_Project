@@ -4,8 +4,8 @@ import com.ucv.apd.homework.model.Calculator;
 import com.ucv.apd.homework.model.MatrixFileReader;
 
 public class Main {
-    public static final int ROWS = 20;
-    public static final int COLUMNS = 20;
+    public static final int ROWS = 320;
+    public static final int COLUMNS = 320;
 
     public static void main(String[] args) {
         MatrixFileReader matrixFileReader = new MatrixFileReader();
