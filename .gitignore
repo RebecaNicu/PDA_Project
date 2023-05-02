@@ -34,3 +34,28 @@ out/
 *.iws
 */.idea/
 .idea/
+
+# Fișiere obiect
+*.o
+
+# Executabile
+*.exe
+*.out
+
+# Fisiere intermediare si directoare de build generate de compilator
+*.dSYM/
+*.stackdump
+build/
+Debug/
+Release/
+x64/
+x86/
+bin/
+obj/
+ipch/
+*.aps
+*.ncb
+*.suo
+*.opensdf
+*.sdf
+*.vcxproj.user
