@@ -12,6 +12,8 @@ int main() {
     int rows, cols;
     int size, rank, i, j, sum = 0;
     int** mat;
+    double start_time, end_time, total_time;
+
     // Initialize MPI
     MPI_Init(NULL, NULL);
 
@@ -19,7 +21,7 @@ int main() {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    FILE* fp = fopen("matrix.txt", "r");
+    FILE* fp = fopen("matrix1000.txt", "r");
 
     // Read the dimensions of the matrix from the file
     fscanf(fp, "%d %d", &rows, &cols);    
@@ -44,6 +46,8 @@ int main() {
         }
     }
 
+    start_time = MPI_Wtime();
+
     // Each process calculates the sum of its assigned rows
     int local_sum = 0;
     for (i = start_row; i < end_row; i++) {
@@ -55,9 +59,13 @@ int main() {
     // Reduce the local sums to obtain the global sum
     MPI_Reduce(&local_sum, &sum, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
+    end_time = MPI_Wtime();
+
+
     // Output the result from the root process
     if (rank == 0) {
-        cout << "The sum of the matrix elements is: " << sum;
+        cout << "The sum of the matrix elements is: " << sum << endl;
+        cout << "Total execution time: " << end_time - start_time << " seconds" << endl;
     }
 
     // Free the dynamically allocated memory
