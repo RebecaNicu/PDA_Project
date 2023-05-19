@@ -67,7 +67,7 @@ int* readMatrixFromFile(const std::string& filename, int& numRows, int& numColum
 }
 
 int main() {
-    std::string filename = "matrice500.txt";
+    std::string filename = "matrice1000.txt";
 
     int numRows, numColumns;
     int* matrix = readMatrixFromFile(filename, numRows, numColumns);
@@ -82,4 +82,3 @@ int main() {
 
     return 0;
 }
-
