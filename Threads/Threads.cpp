@@ -71,12 +71,16 @@ int main() {
 
     int numRows, numColumns;
     int* matrix = readMatrixFromFile(filename, numRows, numColumns);
+    auto start = std::chrono::high_resolution_clock::now();
 
     int numThreads = 3;
 
     int sum = parallelMatrixSum(matrix, numRows, numColumns, numThreads);
 
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
     std::cout << "Suma elementelor matricei: " << sum << std::endl;
+    std::cout << "Timpul de executie: " << duration.count() << " secunde" << std::endl;
 
     delete[] matrix;
 
